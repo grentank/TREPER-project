@@ -1,5 +1,7 @@
 # Что делать и почему именно так?
 
+TREPER - Typescript React Eslint Prettier Express Redux :-)
+
 1. Создаём CRA на typescript
 
 `npx create-react-app folder-name --template typescript`
@@ -14,14 +16,14 @@
 
 3. Устанавливаем typescript-eslint
 
-(Документация (getting started))[https://typescript-eslint.io/getting-started]
+[Документация (getting started)](https://typescript-eslint.io/getting-started)
 
 - `npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin`
 - Потом всё, что в документации сказано
 
 4. Устанавливаем airbnb для typescript
 
-(Ссылка на NPM-пакет)[https://www.npmjs.com/package/eslint-config-airbnb-typescript]
+[Ссылка на NPM-пакет](https://www.npmjs.com/package/eslint-config-airbnb-typescript)
 
 - `npm i -D eslint-config-airbnb-typescript`
 - Прописать в конфиге, как в документации
