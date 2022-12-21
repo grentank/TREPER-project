@@ -99,3 +99,5 @@ TREPER - Typescript React Eslint Prettier Express Redux :-)
   "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
 ```
+
+9. Eslint добавить правило: `"ignorePatterns": ['.eslintrc.js'],`
