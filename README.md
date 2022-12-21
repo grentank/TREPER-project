@@ -69,12 +69,10 @@ TREPER - Typescript React Eslint Prettier Express Redux :-)
 ```json
 {
   "@typescript-eslint/consistent-type-imports": [
-    // импорты type
     "error",
     { "prefer": "type-imports" }
   ],
   "@typescript-eslint/explicit-function-return-type": [
-    // типизация return
     2,
     {
       "allowExpressions": true,
@@ -83,8 +81,8 @@ TREPER - Typescript React Eslint Prettier Express Redux :-)
       "allowDirectConstAssertionInArrowFunctions": true
     }
   ],
-  "@typescript-eslint/switch-exhaustiveness-check": 2, // switch-case по всем
-  "@typescript-eslint/consistent-type-definitions": ["error", "type"] // без interface
+  "@typescript-eslint/switch-exhaustiveness-check": 2,
+  "@typescript-eslint/consistent-type-definitions": ["error", "type"]
 }
 ```
 
@@ -100,4 +98,9 @@ TREPER - Typescript React Eslint Prettier Express Redux :-)
 }
 ```
 
-9. Eslint добавить правило: `"ignorePatterns": ['.eslintrc.js'],`
+9. Если VSCode открыт не в корне проекта (там, где `tsconfig.json`), то нужно:
+
+- Заменить `eslintrc.json` на `eslintrc.js`
+- Добавить `module.exports`
+- Добавить поле: `"ignorePatterns": ['.eslintrc.js'],`
+- В `parserOptions: -> tsconfigRootDir: __dirname,`
