@@ -36,5 +36,7 @@ module.exports = {
     ],
     '@typescript-eslint/switch-exhaustiveness-check': 2,
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+    'no-console': 0,
+    'react-hooks/exhaustive-deps': 0,
   },
 };

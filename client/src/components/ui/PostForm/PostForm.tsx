@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
-import { addPost } from '../../../redux/postsSlice';
-import type Post from '../../types/PostType';
-
-const idGen = (): number => Math.floor(Math.random() * 1e5);
+import { useAppDispatch } from '../../../redux/hooks';
+import { asyncAddPost } from '../../../redux/postsSlice';
+import type { PostInput } from '../../types/PostType';
 
 export default function PostForm(): JSX.Element {
-  const [inputs, setInputs] = useState<Post>({ title: '', body: '', id: idGen() });
-  const dispatch = useDispatch();
+  const [inputs, setInputs] = useState<PostInput>({ title: '', body: '' });
+  const dispatch = useAppDispatch();
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setInputs((prev) => ({ ...prev, [event.target.name]: event.target.value }));
@@ -16,8 +14,8 @@ export default function PostForm(): JSX.Element {
 
   const submitHandler = (event: React.FormEvent): void => {
     event.preventDefault();
-    dispatch(addPost(inputs));
-    setInputs({ title: '', body: '', id: idGen() });
+    dispatch(asyncAddPost(inputs));
+    setInputs({ title: '', body: '' });
   };
   return (
     <Form onSubmit={submitHandler}>

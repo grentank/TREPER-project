@@ -4,4 +4,8 @@ type Post = {
   id: number;
 };
 
-export default Post;
+type PostInput = Omit<Post, 'id'>;
+
+type PostId = Post['id'];
+
+export type { Post, PostInput, PostId };

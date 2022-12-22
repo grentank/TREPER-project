@@ -1,17 +1,17 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { Button, Card, CardText, CardTitle } from 'reactstrap';
-import { deletePost } from '../../../redux/postsSlice';
-import type Post from '../../types/PostType';
+import { useAppDispatch } from '../../../redux/hooks';
+import { asyncDeletePost } from '../../../redux/postsSlice';
+import type { Post } from '../../types/PostType';
 
 type OnePostCardProps = {
   post: Post;
 };
 
 export default function OnePostCard({ post }: OnePostCardProps): JSX.Element {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const deleteHandler = (): void => {
-    dispatch(deletePost(post.id));
+    dispatch(asyncDeletePost(post.id));
   };
   return (
     <Card
