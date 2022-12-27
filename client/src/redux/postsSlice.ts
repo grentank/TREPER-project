@@ -1,10 +1,8 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import type { Post, PostId, PostInput } from '../components/types/PostType';
-import type { ThunkDispatch } from './hooks';
-// import type { AppDispatch } from './store';
-// import { AppDispatch } from './store';
+import type { Post, PostId, PostInput } from '../types/PostType';
+import type { ThunkAction } from './hooks';
 
 // Define the initial state using that type
 const initialState: Post[] = [];
@@ -27,20 +25,20 @@ export const { setPosts, addPost, deletePost } = postsSlice.actions;
 
 export default postsSlice.reducer;
 
-export const asyncAddPost: ThunkDispatch<PostInput> = (newPost) => (dispatch) => {
+export const asyncAddPost: ThunkAction<PostInput> = (newPost) => (dispatch) => {
   axios
     .post('/posts', newPost)
     .then((res: { data: Post }) => dispatch(addPost(res.data)))
     .catch(console.log);
 };
 
-export const fetchAllPosts: ThunkDispatch = () => (dispatch) => {
+export const fetchAllPosts: ThunkAction = () => (dispatch) => {
   axios('/posts')
     .then((res: { data: Post[] }) => dispatch(setPosts(res.data)))
     .catch(console.log);
 };
 
-export const asyncDeletePost: ThunkDispatch<PostId> = (id) => (dispatch) => {
+export const asyncDeletePost: ThunkAction<PostId> = (id) => (dispatch) => {
   axios
     .delete(`/posts/${id.toString()}`)
     .then(() => dispatch(deletePost(id)))

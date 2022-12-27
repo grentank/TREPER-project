@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { useAppDispatch } from '../../../redux/hooks';
 import { asyncAddPost } from '../../../redux/postsSlice';
-import type { PostInput } from '../../types/PostType';
+import type { PostInput } from '../../../types/PostType';
 
 export default function PostForm(): JSX.Element {
   const [inputs, setInputs] = useState<PostInput>({ title: '', body: '' });

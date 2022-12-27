@@ -38,5 +38,6 @@ module.exports = {
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     'no-console': 0,
     'react-hooks/exhaustive-deps': 0,
+    'react/require-default-props': 0,
   },
 };

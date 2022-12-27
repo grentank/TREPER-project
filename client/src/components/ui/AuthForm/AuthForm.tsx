@@ -1,25 +1,34 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
-import type User from '../../types/UserType';
+import type { UserInput } from '../../../types/UserType';
+import { UserContext } from '../../contexts/UserContext';
 
 export default function AuthForm(): JSX.Element {
-  const [inputs, setInputs] = useState<User>({ username: '', password: '' });
+  const [inputs, setInputs] = useState<UserInput>({ username: '', password: '' });
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setInputs((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
+
+  const context = useContext(UserContext);
+  const submitHandler = context?.submitHandler;
   return (
-    <Form>
+    <Form
+      onSubmit={(event: React.FormEvent) => {
+        event.preventDefault();
+        if (submitHandler) submitHandler(inputs);
+      }}
+    >
       <FormGroup floating>
         <Input
           onChange={changeHandler}
           value={inputs.username}
-          id="exampleEmail"
+          id="exampleUsername"
           name="username"
-          placeholder="Email"
+          placeholder="Username"
           type="text"
         />
-        <Label for="exampleEmail">Email</Label>
+        <Label for="exampleUsername">Username</Label>
       </FormGroup>{' '}
       <FormGroup floating>
         <Input

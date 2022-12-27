@@ -7,4 +7,4 @@ export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 // Добавили для dispatch thunk-колбэков. Входящий аргумент должен типизироваться, но может быть опциональным
-export type ThunkDispatch<T = void> = (arg: T) => (dispatch: AppDispatch) => void;
+export type ThunkAction<T = void> = (arg: T) => (dispatch: AppDispatch) => void;
